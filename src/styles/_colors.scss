@@ -1,0 +1,38 @@
+@import "./themes/light.scss";
+@import "./themes/dark.scss";
+
+.avatar-1 {
+  background-color: var(--avatar-1);
+}
+
+.avatar-2 {
+  background-color: var(--avatar-2);
+}
+
+.avatar-3 {
+  background-color: var(--avatar-3);
+}
+
+.avatar-4 {
+  background-color: var(--avatar-4);
+}
+
+.avatar-5 {
+  background-color: var(--avatar-5);
+}
+
+.avatar-0 {
+  background-color: var(--avatar-0);
+}
+
+.white {
+  background-color: white;
+}
+
+h1 {
+  color: var(--h1-color);
+}
+
+h2 {
+  color: var(--h2-color);
+}

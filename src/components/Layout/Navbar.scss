@@ -1,0 +1,9 @@
+.nav-bar {
+  background-color: var(--nav-bg);
+  border-bottom: var(--border);
+  padding: 10px;
+  position: sticky;
+  color: #121212;
+  top: 0;
+  z-index: 4;
+}

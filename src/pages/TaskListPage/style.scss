@@ -1,0 +1,73 @@
+@import "../../styles/mixins";
+/* Add Task */
+
+/* Change Mode */
+
+/* Stat Section */
+
+/* Task Item */
+.task-avatar {
+  h2 {
+    color: white;
+  }
+}
+
+.icon-color {
+  color: var(--icon-color);
+}
+
+.mode-color {
+  color: var(--mode-color);
+}
+
+.task-detail {
+  width: 60%;
+
+  h3 {
+    color: var(--text-color);
+  }
+}
+
+.task-item {
+  @include space-between;
+
+  span {
+    color: var(--text-color);
+  }
+}
+
+.check-box {
+  color: var(--text-color);
+}
+
+.task-check {
+  text-align: right;
+  width: 5rem;
+
+  h5 {
+    color: var(--text-color);
+  }
+}
+
+/* Task List */
+
+/* Task Page */
+
+/* Task Section */
+
+/* Task Stat */
+.task-stat {
+  @include space-between;
+  width: 100%;
+
+  h3 {
+    width: 4rem;
+    color: var(--text-color);
+  }
+
+  span {
+    color: var(--system-color);
+    align-self: end;
+    width: 60%;
+  }
+}

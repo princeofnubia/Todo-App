@@ -1,0 +1,16 @@
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin rounded($dimension: 1rem) {
+  height: $dimension;
+  width: $dimension;
+  border-radius: 50%;
+}
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+}

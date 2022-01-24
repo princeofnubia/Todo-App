@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Flex stuffs  */
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.content-right {
+  display: flex;
+  justify-self: right;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.align-i-center {
+  align-items: center;
+}
+
+.space-b {
+  justify-content: space-between;
+}
+
+/* Height and width */
+
+.full-height {
+  min-height: 100vh;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-10 {
+  width: 10%;
+}
