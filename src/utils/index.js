@@ -2,7 +2,7 @@ export const getTime = () => {
   // get formatted time like 4:00PM
   const date = new Date();
   const pmOram = date.getHours() > 12 ? "PM" : "AM";
-  return `${date.getHours()}:${date.getMinutes()}${pmOram}`;
+  return `${date.getHours()}:${date.getMinutes()} ${pmOram}`;
 };
 
 export const sleep = (period) => {

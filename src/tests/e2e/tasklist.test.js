@@ -184,8 +184,6 @@ describe("Creation of tasks", () => {
     // handling some timeout and buffering it to avoid jest yelling at me!
     await sleep(300);
     let currentTime = getTime();
-    expect(timeCompleted(currentTime.substring(0, 2))).toHaveTextContent(
-      currentTime
-    );
+    expect(timeCompleted(currentTime)).toHaveTextContent(currentTime);
   }, 20000);
 });
