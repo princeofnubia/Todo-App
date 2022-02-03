@@ -5,6 +5,7 @@ import { faCheck, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { getTime, sleep, getFirstChar } from "../../../utils/";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import store from "../../../store/store";
+import PropTypes from "prop-types";
 const TaskItem = ({
   taskName,
   taskDescription,
@@ -26,10 +27,10 @@ const TaskItem = ({
       },
     });
   };
-  const handleKeyPress = async (e) => {
+  const handleKeyPress = (e) => {
     e.preventDefault();
     if (e.code === "Enter") {
-      await checkTask(e);
+      checkTask(e);
     }
   };
   return (
@@ -80,4 +81,12 @@ const TaskItem = ({
   );
 };
 
+TaskItem.propTypes = {
+  taskName: PropTypes.string,
+  taskDescription: PropTypes.string,
+  color: PropTypes.number,
+  id: PropTypes.string,
+  completed: PropTypes.bool,
+  timeDone: PropTypes.string,
+};
 export default TaskItem;

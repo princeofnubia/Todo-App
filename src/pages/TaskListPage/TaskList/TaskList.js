@@ -1,5 +1,6 @@
 import React from "react";
 import TaskItem from "../TaskItem/TaskItem";
+import PropTypes from "prop-types";
 const TaskList = ({ tasks }) => {
   return (
     <div className="task-list">
@@ -15,5 +16,8 @@ const TaskList = ({ tasks }) => {
     </div>
   );
 };
-
+// needs props types
+TaskList.propTypes = {
+  tasks: PropTypes.array,
+};
 export default TaskList;

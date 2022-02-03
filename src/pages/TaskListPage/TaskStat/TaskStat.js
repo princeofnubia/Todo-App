@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 const TaskStat = ({ value, description }) => {
   return (
     <div className="task-stat my-3">
@@ -8,4 +9,9 @@ const TaskStat = ({ value, description }) => {
   );
 };
 
+// needs a prop types
+TaskStat.propTypes = {
+  value: PropTypes.string,
+  description: PropTypes.string,
+};
 export default TaskStat;

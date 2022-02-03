@@ -5,7 +5,7 @@ import TaskList from "../TaskList/TaskList";
 import { useSelector } from "react-redux";
 
 const selectTasks = (state) => state.tasks;
-const TaskSection = (props) => {
+const TaskSection = () => {
   const { tasks } = useSelector(selectTasks);
   return (
     <div>

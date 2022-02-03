@@ -1,6 +1,6 @@
 import { DONE_TASK, CREATE_TASK, RESET_TASK } from "./taskAction";
 import taskState from "./taskState";
-const nextTaskId = () => new Date().getTime();
+
 const initialState = taskState;
 
 export default function taskReducer(state = initialState, action) {
@@ -21,18 +21,10 @@ export default function taskReducer(state = initialState, action) {
       };
 
     case CREATE_TASK:
+      console.log(action.payload);
       return {
         ...state,
-        tasks: [
-          ...state.tasks,
-          {
-            // make a random time our ID
-            id: nextTaskId(),
-            ...action.payload,
-            color: action.payload.color,
-            completed: false,
-          },
-        ],
+        tasks: [...state.tasks, ...action.payload],
       };
     case RESET_TASK:
       return {
