@@ -1,16 +1,26 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRandom } from "../../../utils";
 import { useSelector } from "react-redux";
 import store from "../../../store/store";
 import "../style.scss";
-const selectTasks = (state) => state.tasks;
 
-const CreatePage = () => {
+interface Task {
+  taskDescription: string;
+  taskName: string;
+}
+
+const selectTasks = (state: any) => state.tasks;
+
+const CreatePage: React.FC = () => {
   const { tasks } = useSelector(selectTasks);
-  const [values, setValue] = useState({ taskDescription: "", taskName: "" });
+  const [values, setValue] = useState<Task>({
+    taskDescription: "",
+    taskName: "",
+  });
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let newColor = getRandom(6, 100);
     let prevColor = tasks.length > 0 ? tasks[tasks.length - 1].color : newColor;
@@ -22,6 +32,7 @@ const CreatePage = () => {
     });
     navigate("/");
   };
+
   return (
     <div className="create-task">
       <h1> Add Task </h1>
@@ -48,7 +59,7 @@ const CreatePage = () => {
             setValue({ ...values, taskDescription: e.target.value });
           }}
         />
-        <button type="submit" tabIndex={"0"} className="add-button">
+        <button type="submit" tabIndex={0} className="add-button">
           {" "}
           Add{" "}
         </button>

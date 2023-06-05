@@ -1,15 +1,15 @@
+import React from 'react'
 import { Routes, Route, Navigate } from "react-router-dom";
 import CreateTaskPage from "../pages/CreateTaskPage";
 import TaskListPage from "../pages/TaskListPage";
 
-const Navigator = () => {
-  // handles routing here
+const Navigator: React.FC = () => {
   return (
     <Routes>
       <Route path="/createtask/" element={<CreateTaskPage />} />
-      <Route exact path="/viewtasks" element={<TaskListPage />} />
-      <Route exact path="/" element={<TaskListPage />} />
-      <Route exact path="*" element={<Navigate to="/" />} />
+      <Route path="/viewtasks" element={<TaskListPage />} />
+      <Route path="/" element={<TaskListPage />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

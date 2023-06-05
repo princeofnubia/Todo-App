@@ -2,11 +2,20 @@ import React, { useState } from "react";
 import Avatar from "../../../components/Avatar/Avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
-import { getTime, sleep, getFirstChar } from "../../../utils/";
+import { getTime, sleep, getFirstChar } from "../../../utils";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import store from "../../../store/store";
-import PropTypes from "prop-types";
-const TaskItem = ({
+
+interface TaskItemProps {
+  taskName: string;
+  taskDescription?: string;
+  color?: string;
+  id: number;
+  completed?: boolean;
+  timeDone?: string;
+}
+
+const TaskItem: React.FC<TaskItemProps> = ({
   taskName,
   taskDescription,
   color,
@@ -15,24 +24,28 @@ const TaskItem = ({
   timeDone,
 }) => {
   const [done, setDone] = useState(false);
-  const checkTask = async (e) => {
+
+  const checkTask = async (e: React.MouseEvent<SVGSVGElement, MouseEvent> | React.KeyboardEvent<SVGSVGElement>) => {
     e.preventDefault();
-    setDone(true);
-    await sleep(200);
-    store.dispatch({
-      type: "task/doneTask",
-      payload: {
-        id,
-        timeDone: getTime(),
-      },
-    });
+    if (e.type === 'click' || (e as React.KeyboardEvent<SVGSVGElement>).code === 'Enter') {
+      setDone(true);
+      await sleep(200);
+      store.dispatch({
+        type: "task/doneTask",
+        payload: {
+          id,
+          timeDone: getTime(),
+        },
+      });
+    }
   };
-  const handleKeyPress = (e) => {
-    e.preventDefault();
+
+  const handleKeyPress = (e: React.KeyboardEvent<SVGSVGElement>) => {
     if (e.code === "Enter") {
       checkTask(e);
     }
   };
+
   return (
     <div className="task-item my-3 space-between">
       <Avatar color={`avatar-${color}`}>
@@ -46,12 +59,11 @@ const TaskItem = ({
             <FontAwesomeIcon
               icon={faCheck}
               size={"lg"}
-              alt="checked"
               className="white"
             />
           ) : (
             <h2 aria-labelledby={taskName}>{getFirstChar(taskName)}</h2>
-          )}{" "}
+          )}
         </div>
       </Avatar>
       <div className="task-detail mx-3">
@@ -67,13 +79,13 @@ const TaskItem = ({
             role="checkbox"
             aria-checked={!done}
             aria-hidden={false}
-            tabIndex={"0"}
+            tabIndex={0}
             aria-label={taskName}
             size={"2x"}
             id={taskName}
             className={"check-box"}
-            onClick={checkTask}
-            onKeyPress={handleKeyPress}
+            onClick={(e) => checkTask(e as React.MouseEvent<SVGSVGElement, MouseEvent>)}
+            onKeyDown={handleKeyPress}
           />
         )}
       </div>
@@ -81,12 +93,4 @@ const TaskItem = ({
   );
 };
 
-TaskItem.propTypes = {
-  taskName: PropTypes.string,
-  taskDescription: PropTypes.string,
-  color: PropTypes.number,
-  id: PropTypes.string,
-  completed: PropTypes.bool,
-  timeDone: PropTypes.string,
-};
 export default TaskItem;

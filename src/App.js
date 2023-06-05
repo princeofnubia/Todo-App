@@ -5,10 +5,10 @@ import Navigator from "./Route/Route";
 import Navbar from "./components/Layout/Navbar";
 
 const App = () => {
-  const theme = useState("light");
+  const [theme, setTheme] = useState("light");
   return (
     <div className={`app ${theme[0]}`}>
-      <ThemeContext.Provider value={theme}>
+      <ThemeContext.Provider value={[theme, setTheme]}>
         <Router>
           <Navbar />
           <div className={`app-body`}>

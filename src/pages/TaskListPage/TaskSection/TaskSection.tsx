@@ -4,7 +4,7 @@ import ChangeMode from "../ChangeMode/ChangeMode";
 import TaskList from "../TaskList/TaskList";
 import { useSelector } from "react-redux";
 
-const selectTasks = (state) => state.tasks;
+const selectTasks = (state: { tasks: any; }) => state.tasks;
 const TaskSection = () => {
   const { tasks } = useSelector(selectTasks);
   return (

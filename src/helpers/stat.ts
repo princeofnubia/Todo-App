@@ -1,9 +1,10 @@
-const useStat = (tasks) => {
+const useStat = (tasks: any[]) => {
   const todos = tasks.length > 0 ? tasks : [];
-  const completed = () => todos.filter((val) => val.completed === true).length;
+  const completed = (): number =>
+    todos.filter((val) => val.completed === true).length;
   const completedTasks = completed();
-  const uncompleted = () => todos.length - completedTasks;
-  const completionRate = () => {
+  const uncompleted = (): number => todos.length - completedTasks;
+  const completionRate = (): number => {
     if (todos.length === 0) {
       return 0;
     }
@@ -15,17 +16,16 @@ const useStat = (tasks) => {
       value: completedTasks,
       description: "Total tasks closed",
     },
-
     {
       value: uncompleted(),
       description: "Total tasks opened",
     },
-
     {
       value: `${completionRate()}%`,
       description: "Completion Rate",
     },
   ];
+
   return [stat];
 };
 

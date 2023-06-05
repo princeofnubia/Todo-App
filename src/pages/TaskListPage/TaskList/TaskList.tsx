@@ -1,14 +1,23 @@
 import React from "react";
 import TaskItem from "../TaskItem/TaskItem";
-import PropTypes from "prop-types";
-const TaskList = ({ tasks }) => {
+
+interface TaskProps {
+  id: number;
+  // Add additional properties of the task object here
+}
+
+interface TaskListProps {
+  tasks: TaskProps[];
+}
+
+const TaskList: React.FC<TaskListProps> = ({ tasks, }) => {
   return (
     <div className="task-list">
       <ul>
         {tasks.map((props) => {
           return (
             <li key={props.id}>
-              <TaskItem {...props} />
+              <TaskItem taskName={""} {...props} />
             </li>
           );
         })}
@@ -16,8 +25,7 @@ const TaskList = ({ tasks }) => {
     </div>
   );
 };
-// needs props types
-TaskList.propTypes = {
-  tasks: PropTypes.array,
-};
+
+
+
 export default TaskList;
